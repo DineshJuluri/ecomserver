@@ -15,14 +15,13 @@ const uri = `mongodb+srv://VirtuoMart:AziO95ZrVxGVLw4g@ecommerce.qssaue2.mongodb
 
 
 
-mongoose.connect(`${uri}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
+mongoose.connect(`${uri}`).then(() => {
+    console.log('Connected to MongoDB');
+}).catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
 });
 
-mongoose.connection.on('connected', () => {
-    console.log('Connected to MongoDB');
-});
+
 
 
 // Route to handle creating a user
